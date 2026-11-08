@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="友情人格匹配测试：20 题，看你在亲密友情中的表达、掌控、边界、情绪处理与修复方式，匹配最接近的《后会友期》嘉宾人格类型。">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#2457d6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%AC%3C/text%3E%3C/svg%3E">
+<title>友情人格匹配 · 你会是《后会友期》里的谁</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#fff; --ink:#172033; --muted:#667085;
+    --line:#e4e8f0; --brand:#2457d6; --brand2:#0f8f78;
+    --warn:#b54708; --danger:#b42318; --soft:#eef3ff; --good:#087443;
+    --pink:#b8447a; --pinksoft:#fdf2f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.65}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 30px rgba(23,32,51,.05);margin-bottom:18px}
+  h1{font-size:28px;line-height:1.3;margin:0 0 10px}
+  h2{font-size:22px;margin:0 0 12px}
+  h3{font-size:17px;margin:20px 0 10px}
+  p{margin:8px 0}
+  .muted{color:var(--muted);font-size:14px}
+  .tag{display:inline-block;background:var(--soft);color:var(--brand);border-radius:999px;padding:3px 10px;font-size:12px;margin:2px 4px 2px 0}
+  .tag.pink{background:var(--pinksoft);color:var(--pink)}
+  .btn{display:inline-block;border:0;border-radius:12px;padding:12px 20px;font-size:16px;font-weight:700;cursor:pointer;background:var(--brand);color:#fff;margin:8px 8px 0 0}
+  .btn.secondary{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+  .btn.ghost{background:#eef1f6;color:var(--ink)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .progress{height:10px;background:#e8edf7;border-radius:999px;overflow:hidden;margin:12px 0}
+  .progress > div{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0;transition:width .25s}
+  .q{border-top:1px solid var(--line);padding:18px 0 6px}
+  .q:first-of-type{border-top:0}
+  .qtitle{font-weight:700;margin-bottom:10px}
+  .qno{color:var(--brand);margin-right:6px}
+  .opts{display:grid;gap:8px}
+  .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;background:#fbfcff}
+  .opt:hover{border-color:#b9c8f5;background:#f7f9ff}
+  .opt input{margin-top:4px}
+  .scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .scale .opt{justify-content:center;text-align:center;font-size:13px;padding:10px 6px}
+  .scale .opt input{display:none}
+  .scale .opt.sel{border-color:var(--brand);background:var(--soft);color:var(--brand);font-weight:700}
+  .error{color:var(--danger);font-size:14px;margin-top:8px}
+  .hidden{display:none}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  @media(max-width:720px){.scale{grid-template-columns:1fr}.wrap{padding:14px 10px 60px}.card{padding:18px}}
+  .metric{margin:10px 0}
+  .metricTop{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+  .bar{height:9px;background:#e8edf7;border-radius:999px;overflow:hidden;margin-top:6px}
+  .bar > div{height:100%;background:var(--brand);border-radius:999px}
+  .bar.alt > div{background:var(--brand2)}
+  .bar.pink > div{background:var(--pink)}
+  .callout{border-left:4px solid var(--brand);background:#f4f7ff;padding:12px 14px;border-radius:10px;margin:12px 0}
+  .callout.warn{border-left-color:var(--warn);background:#fff8f0}
+  .callout.good{border-left-color:var(--good);background:#f0fbf7}
+  .callout.pink{border-left-color:var(--pink);background:var(--pinksoft)}
+  .list li{margin:6px 0}
+  .consent{display:flex;gap:10px;align-items:flex-start;background:#fbfcff;border:1px solid var(--line);border-radius:12px;padding:12px}
+  .printOnly{display:none}
+  .restoreBanner{background:#fff8e6;border:1px solid #f0d58c;border-radius:12px;padding:12px 14px;margin:0 0 14px;display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+  .restoreBanner .small{color:#8a5a00}
+  .autosaveHint{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin:8px 0 0;flex-wrap:wrap}
+  .autosaveHint .dot{width:8px;height:8px;border-radius:50%;background:var(--good);display:inline-block;flex:0 0 auto}
+  .autosaveHint.offline .dot{background:var(--muted)}
+  .autosaveHint button{margin-left:auto}
+  .policy{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fbfcff}
+  .policy summary{cursor:pointer;font-weight:700;color:var(--brand);font-size:15px}
+  .policyBody{margin-top:10px;font-size:14px;color:#344054}
+  .policyBody h3{font-size:15px;margin:12px 0 6px;color:var(--ink)}
+  .policyBody p{margin:4px 0}
+  .placeholder{color:#b54708;background:#fff8f0;padding:2px 6px;border-radius:6px;font-size:13px}
+  .hero{background:linear-gradient(135deg,#eef3ff 0%,#f5f7fb 45%,#e9f7f3 100%);border-radius:18px;padding:22px;margin:14px 0;border:1px solid var(--line)}
+  .heroName{font-size:34px;font-weight:800;margin:4px 0 2px;color:var(--brand)}
+  .heroTag{font-size:16px;color:#344054;font-weight:600}
+  .scorePill{display:inline-block;background:#fff;border:1px solid var(--brand);color:var(--brand);border-radius:999px;padding:4px 14px;font-weight:800;font-size:15px;margin-left:8px}
+  .quote{border-left:4px solid var(--pink);background:var(--pinksoft);padding:14px 16px;border-radius:10px;margin:14px 0;font-size:15px}
+  .twoCol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.twoCol{grid-template-columns:1fr}}
+  .miniCard{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fbfcff}
+  .miniCard h4{margin:0 0 8px;font-size:16px}
+  .advice{counter-reset:adv;list-style:none;padding-left:0}
+  .advice li{counter-increment:adv;position:relative;padding:10px 12px 10px 44px;border:1px solid var(--line);border-radius:12px;background:#fff;margin:10px 0}
+  .advice li::before{content:counter(adv);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    .card{box-shadow:none;border:0;padding:10px 0;page-break-inside:avoid}
+    .noPrint{display:none!important}
+    .printOnly{display:block}
+    .bar,.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 开始页 -->
+  <section id="intro" class="card">
+    <span class="tag">友情人格匹配</span>
+    <span class="tag">20 题 · 约 5 分钟</span>
+    <span class="tag pink">本地计算 · 自动保存</span>
+    <h1>你会是《后会友期》里的谁？</h1>
+    <p class="muted">不评判谁对谁错，只帮你看清：你在友情里的表达浓度、掌控感、边界感、情绪消化方式和修复姿态，如何让你靠近一些人，又如何可能让你和在意的人走散。</p>
+
+    <div class="callout">
+      <strong>你会得到：</strong>
+      <ul class="list">
+        <li>最接近你的友情人格类型（对应节目中一位嘉宾的人格底色）；</li>
+        <li>五维对照：你的得分 vs 该类型的典型得分；</li>
+        <li>这份人格在友情里的优势，以及你可能付出的代价；</li>
+        <li>3 条可执行的友善建议 + 一句“友情说明书”；</li>
+        <li>最容易和你互相误会的类型，以及怎么减少磨损。</li>
+      </ul>
+    </div>
+
+    <div class="callout warn">
+      <strong>重要说明：</strong>
+      <ul class="list">
+        <li>本测试为自我探索工具，<strong>非官方测试</strong>，与节目及嘉宾无关联；</li>
+        <li>结果基于节目公开呈现的互动印象做人格维度抽象，<strong>不是对嘉宾本人的心理评估或定性</strong>；</li>
+        <li>不构成临床诊断、心理治疗或医疗建议，也不预测关系成败；</li>
+        <li>答案仅保存在你本机浏览器，不主动上传服务器。</li>
+      </ul>
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" id="consent">
+      <span>我已阅读并同意：本测试为友情关系自评工具，结果仅供自我探索与沟通参考，不替代专业心理咨询或医疗诊断。我理解答案保存在本机浏览器，不上传服务器。</span>
+    </label>
+    <div class="error hidden" id="consentError">请先勾选知情同意。</div>
+    <button class="btn" id="startBtn">开始测试</button>
+
+    <details class="policy">
+      <summary>隐私与使用说明（Sage Studio工作室原创设计，盗版、转载等一经发现追究责任。您的测评内容不会上传服务器，没有泄露隐私的风险，请放心作答。）</summary>
+      <div class="policyBody">
+        <h3>数据说明</h3>
+        <p>当前版本：答案与进度仅保存在你的本机浏览器 localStorage，不主动上传服务器。点击【重新测试/清除进度】可删除本机记录。更换浏览器、使用无痕模式或清除浏览器数据后，记录会丢失。</p>
+        <h3>使用边界</h3>
+        <p>本测试不用于任何形式的心理诊断、人格定性或关系评判。结果中的人物类型仅为便于理解而做的抽象标签，不代表对真实人物的评价。</p>
+        <h3>版权说明</h3>
+        <p>节目名称仅用于说明测试的灵感来源，本页面为非官方衍生内容。</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 测试区 -->
+  <section id="test" class="card hidden">
+    <div id="restoreNotice" class="restoreBanner hidden"></div>
+    <div class="row" style="justify-content:space-between">
+      <div>
+        <span class="tag" id="stepTag">第 1 部分</span>
+        <h2 id="moduleTitle" style="margin-top:8px">表达与反应</h2>
+      </div>
+      <div class="muted" id="progressText">0 / 20</div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <p class="muted" id="moduleHint"></p>
+    <div class="autosaveHint" id="autosaveHint">
+      <span class="dot"></span>
+      <span id="autosaveText">进度已自动保存在本浏览器</span>
+      <button type="button" class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="restart()">清除进度</button>
+    </div>
+    <form id="questionForm"></form>
+    <div class="error hidden" id="formError">请完成本页所有必答题后再继续。</div>
+    <div class="row" style="justify-content:space-between;margin-top:18px">
+      <button class="btn ghost noPrint" id="prevBtn" type="button">上一步</button>
+      <div>
+        <button class="btn secondary noPrint" id="nextBtn" type="button">下一步</button>
+        <button class="btn hidden" id="submitBtn" type="button">生成我的友情人格报告</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 报告区 -->
+  <section id="report" class="hidden"></section>
+
+</div>
+
+<script>
+/* =========================================================
+   友情人格匹配测试 · 你会是《后会友期》里的谁
+   20 题 · 5 维 · 8 种人格类型 · 本地计分
+   ========================================================= */
+
+const STORAGE_KEY = 'friendship_match_v1';
+const STORAGE_VERSION = 1;
+
+const MODULES = [
+  {key:'M1', title:'表达与反应', hint:'请按你在亲密友情中的真实反应选择，而不是“应该怎样”。'},
+  {key:'M2', title:'参与与影响', hint:'想想你面对在意的人时，通常会怎么参与对方的生活。'},
+  {key:'M3', title:'距离与靠近', hint:'这部分关于你允许别人走多近，以及你希望自己在对方心里的位置。'},
+  {key:'M4', title:'情绪消化', hint:'请回想最近一次和朋友之间的小摩擦或不愉快。'},
+  {key:'M5', title:'关系变化时', hint:'最后一组，关于关系出现裂痕或变化时你的选择。'}
+];
+
+const SCALE_LABELS = ['完全不像我','比较不像','说不好','比较像我','非常像我'];
+
+const QUESTIONS = [
+  /* M1 表达与反应 4 */
+  {id:'Q1', m:'M1', dim:'表达', reverse:false, t:'朋友做了让我不舒服的事，我会当场说出来，哪怕语气有点冲。'},
+  {id:'Q2', m:'M1', dim:'表达', reverse:false, t:'和朋友有分歧时，我倾向于把话说开，而不是各自消化。'},
+  {id:'Q3', m:'M1', dim:'表达', reverse:true,  t:'比起直接表达不满，我更可能沉默、疏远，或者把话咽回去。'},
+  {id:'Q4', m:'M1', dim:'表达', reverse:true,  t:'我很少在朋友面前失控；即使心里翻江倒海，表面也尽量体面。'},
+
+  /* M2 参与与影响 4 */
+  {id:'Q5', m:'M2', dim:'掌控', reverse:false, t:'如果我认定一个朋友值得，我会主动帮他铺路、给建议，甚至替他做决定。'},
+  {id:'Q6', m:'M2', dim:'掌控', reverse:false, t:'看到朋友“不够努力”或“方向不对”，我会忍不住想纠正他。'},
+  {id:'Q7', m:'M2', dim:'掌控', reverse:true,  t:'我更喜欢“各管各的”，不喜欢替别人操心，也不喜欢别人替我操心。'},
+  {id:'Q8', m:'M2', dim:'掌控', reverse:true,  t:'如果朋友成长得很快、不再需要我的帮助，我会真心为他高兴，而不是感到失落。'},
+
+  /* M3 距离与靠近 4 */
+  {id:'Q9',  m:'M3', dim:'边界', reverse:false, t:'朋友之间也应该有清晰的底线；一旦越界，我会选择拉开距离。'},
+  {id:'Q10', m:'M3', dim:'边界', reverse:false, t:'我很难真正让人走进内心；对大多数人友好，但极少有“密友”。'},
+  {id:'Q11', m:'M3', dim:'边界', reverse:true,  t:'我渴望在友情里成为对方的“唯一”或“最重要”，如果不是，我会很在意。'},
+  {id:'Q12', m:'M3', dim:'边界', reverse:true,  t:'我更容易被“需要我”的人吸引，享受那种被依赖、被仰望的感觉。'},
+
+  /* M4 情绪消化 4 */
+  {id:'Q13', m:'M4', dim:'内化', reverse:false, t:'发生矛盾后，我会反复回想细节，在心里演很多遍。'},
+  {id:'Q14', m:'M4', dim:'内化', reverse:false, t:'我嘴上可能说“没事”，但心里会记很久，很难真正翻篇。'},
+  {id:'Q15', m:'M4', dim:'内化', reverse:false, t:'我擅长用玩笑、吐槽或“无所谓”的样子，把在意藏起来。'},
+  {id:'Q16', m:'M4', dim:'内化', reverse:true,  t:'我消化情绪很快，不太会为旧事反复内耗。'},
+
+  /* M5 关系变化时 4 */
+  {id:'Q17', m:'M5', dim:'和解', reverse:false, t:'即使关系出了问题，我也愿意主动破冰，因为珍惜这段情谊。'},
+  {id:'Q18', m:'M5', dim:'和解', reverse:true,  t:'我接受“有些关系就是回不去了”，不强求和好，也不假装亲密。'},
+  {id:'Q19', m:'M5', dim:'和解', reverse:true,  t:'如果对方低头了但“姿态没放下来”，我会觉得他“很装”，不想接。'},
+  {id:'Q20', m:'M5', dim:'和解', reverse:false, t:'我很容易心软，别人一示好，我就愿意再给一次机会。'}
+];
+
+const DIM_NAMES = {
+  表达:'表达浓度',
+  掌控:'掌控感',
+  边界:'边界感',
+  内化:'情绪内化',
+  和解:'和解姿态'
+};
+
+const DIM_NOTES = {
+  表达:'高＝直白外放、当场说开；低＝克制内收、倾向沉默消化。',
+  掌控:'高＝主动安排、忍不住纠正；低＝各管各的、抗拒被安排。',
+  边界:'高＝底线刚性、难以靠近；低＝渴望融合、在意“唯一性”。',
+  内化:'高＝反刍、藏得深；低＝外化快消、不记隔夜仇。',
+  和解:'高＝主动破冰、容易心软；低＝接受回不去、不强求。'
+};
+
+const WEIGHTS = {表达:1, 掌控:1, 边界:1, 内化:1, 和解:0.7};
+const MAX_DIST = Math.sqrt(Object.values(WEIGHTS).reduce((s,w)=>s + w*16, 0));
+
+const GUESTS = [
+  {
+    name:'张萌',
+    tag:'热忱通透，好心但不会好好说话',
+    coord:{表达:4.7, 掌控:4.3, 边界:2.7, 内化:1.9, 和解:4.5},
+    portrait:'你在友情里是“热”的那一类。在意一个人，你会直接靠近：给建议、铺路、替他做决定。你的情绪不藏着，高兴就笑，不爽就说，说完也就过去了，很少记仇。你相信真朋友就该把话说开。但你也容易在“我是为你好”里越界——对方要的可能只是一句“我在”，你却给了一整套方案。',
+    strengths:['真诚不内耗，说完就翻篇，不给关系留暗账','行动力强，能实打实帮到人，不只是嘴上关心','关系里不玩猜谜，你的在意对方看得见'],
+    costs:['好意容易被接收成控制','直白可能伤到比你敏感的人','你以为是“说开了”，对方其实还在消化'],
+    advice:[
+      '给建议前先问一句：“你现在是想让我出主意，还是就想有人听你说？”',
+      '把“你应该”换成“我担心的是……”——表达你的感受，而不是给对方下指令。',
+      '记住：对方不采纳你的建议，不等于不重视你。'
+    ],
+    manual:'我对你凶，是因为我在意；如果我的方式让你不舒服，直接告诉我，我不会记仇。'
+  },
+  {
+    name:'马天宇',
+    tag:'温柔是教养，疏离是保护',
+    coord:{表达:2.2, 掌控:1.8, 边界:4.7, 内化:4.4, 和解:2.0},
+    portrait:'你待人温和有礼，但心里有一道很高的墙。你不太愿意麻烦别人，也不喜欢别人替你做决定。一旦有人以“关心”的名义越过你的边界，你会安静地退后——不吵不闹，但距离已经拉开了。你不擅长当场表达不满，更多时候选择沉默消化，而这一消化，可能就是很久。',
+    strengths:['有分寸感，尊重别人的界限','情绪稳定，不轻易伤人','独立，不依附，也不把情绪甩给别人'],
+    costs:['你的“没事”让人误以为真的没事','沉默容易被读成冷漠','想靠近你的人，找不到门在哪里'],
+    advice:[
+      '试着把“没事”换成“我有点不舒服，但我不想吵，给我点时间”——不必敞开全部，但给一个信号。',
+      '允许一个人看到你 10% 的脆弱，关系才有机会往下走。',
+      '边界不是墙，是可以开关的门：你可以选择让谁进来，但不必把门砌死。'
+    ],
+    manual:'我不说话，不代表我不在意；我只是需要一点时间，把情绪整理好再面对你。'
+  },
+  {
+    name:'厉娜',
+    tag:'分得清是非，不原谅但不纠缠',
+    coord:{表达:3.6, 掌控:1.9, 边界:3.9, 内化:2.6, 和解:2.2},
+    portrait:'你在友情里清醒、真实，不演也不装。别人对你好，你记得；越了底线，你也记得。你不会歇斯底里，也不太会反复内耗——你会把账算清楚，然后转身过自己的日子。你接受“有些关系就是回不去了”，不强求和好，也不假装亲密。',
+    strengths:['界限清晰，不委屈自己去维持表面和平','情绪稳定，不做无效纠缠','真实，让人清楚你的底线在哪里'],
+    costs:['你的“拎得清”有时显得冷','很少给别人“解释一次”的空间','有些人还没来得及道歉，就已经被你归了档'],
+    advice:[
+      '在“归档”之前，给对方一次说明的机会——不是原谅，是确认你的判断没出错。',
+      '允许自己在某段关系里“没那么清醒”一次，柔软不等于失守。',
+      '把“我不需要”偶尔换成“我其实希望”——表达需求不会削弱你的独立。'
+    ],
+    manual:'我不纠缠，是因为我尊重自己；但如果我在意你，我会给你一次把话说完的机会。'
+  },
+  {
+    name:'许飞',
+    tag:'心思细腻，情绪藏得很深',
+    coord:{表达:2.3, 掌控:3.0, 边界:3.6, 内化:4.6, 和解:2.8},
+    portrait:'你看起来随性甚至有点倔，但内心比谁都细腻。你很在意关系里的细节——一句话的语气、一次没被回复的消息，你都能反复想很久。你不习惯直接说“我难过”，更多用玩笑、吐槽，或者“无所谓”的样子把在意藏起来。表面上看你已经走出来了，其实你还站在原地打转。',
+    strengths:['共情力强，能稳稳接住别人的情绪','对关系认真，不敷衍','感受力强，是你创作和生活的底色'],
+    costs:['内耗消耗你的能量','对方根本不知道你在意，误会越积越深','你把委屈藏起来，也把机会一起藏起来了'],
+    advice:[
+      '把“随便”换成“我其实有点在意”——说出真实的那个版本，哪怕声音很小。',
+      '给反刍设一个时限：想 20 分钟，然后写下“我下一步能做什么”，把循环变成行动。',
+      '找一个你信任的人，练习说一次“我需要你”。'
+    ],
+    manual:'我嘴上说无所谓，其实很在意；如果你愿意多问一句，我会说的。'
+  },
+  {
+    name:'白小纯',
+    tag:'松弛不是躺平，是换种节奏复盘',
+    coord:{表达:3.0, 掌控:1.8, 边界:2.9, 内化:3.0, 和解:3.4},
+    portrait:'你在友情里比较松弛，不喜欢被说教，也不喜欢被安排。别人急着给你规划人生，你会本能地往后退一步。你不是不在乎，只是习惯用自己的节奏处理——先放一放，过一阵再回头看。你反感被控制，也很少去控制别人。',
+    strengths:['相处起来没压力，让人放松','不强加于人，尊重差异','有自己的节奏，不容易被带着跑'],
+    costs:['松弛有时被误读为不上心','回避当下的冲突，问题会拖成心结','别人分不清你的“退一步”是在想，还是在走'],
+    advice:[
+      '告诉对方“我需要想一下，明天给你答复”——给松弛一个明确的期限，对方就不慌了。',
+      '区分“被控制”和“被关心”：前者要设边界，后者可以收下。',
+      '重要的事，别只在自己脑子里复盘；说出来一半，关系就前进一半。'
+    ],
+    manual:'我不是不在乎，我只是需要一点自己的节奏；给我时间，我会回来找你。'
+  },
+  {
+    name:'青稚',
+    tag:'像停不下来的陀螺，高要求变成压迫感',
+    coord:{表达:3.6, 掌控:4.7, 边界:2.5, 内化:2.1, 和解:2.8},
+    portrait:'你是那种对自己狠、也希望身边人一起往前跑的人。你精力旺盛，标准很高，看到朋友“不够努力”就忍不住想推一把。你不太会停下来共情，因为你觉得“解决问题”才是真正的关心。可对方感受到的，常常是“我还不够好”。',
+    strengths:['行动力强，能带动身边的人一起往前走','目标清晰，不拖泥带水','对关系有责任感，愿意付出'],
+    costs:['你的“为你好”变成对方的压力','你跑得太快，跟不上的人就被落下了','你很少问自己累不累'],
+    advice:[
+      '给建议前先共情一句：“我知道你现在挺难的。”——先接住人，再谈方法。',
+      '关系不是项目，允许有人按自己的速度走。',
+      '每周问自己一次：“我这么做，是因为他需要，还是因为我停不下来？”'
+    ],
+    manual:'我催你，是因为我相信你能做到；如果我太急了，你可以叫停我。'
+  },
+  {
+    name:'文吉儿',
+    tag:'需要掌握关系的叙述主动权',
+    coord:{表达:3.7, 掌控:4.0, 边界:2.7, 内化:3.9, 和解:3.0},
+    portrait:'你在友情里投入很深，也很会“给予”——你愿意为朋友付出，愿意讲、愿意安排、愿意成为那个把事情串起来的人。在这个过程中，你也在确认自己的位置：我对你很重要，我们的关系是这样发展的。当对方成长了、不再需要你，或者故事的走向不由你决定时，你会不安。',
+    strengths:['有感染力，能把人聚在一起','表达力强，关系里有温度','愿意付出，不吝啬'],
+    costs:['付出可能变成一种“隐性要求”','对方会感到被安排','你讲述的那个版本，可能不是对方感受到的版本'],
+    advice:[
+      '付出前问一句：“你需要我这样做吗？”——把“我想给”换成“你要不要”。',
+      '允许对方讲述他自己的版本，即使那和你的记忆不一样。',
+      '当朋友不再需要你帮忙时，为他高兴——那不是你被取代，是他长大了。'
+    ],
+    manual:'我讲这么多，是因为我在乎我们的关系；如果我讲得太满，你可以打断我。'
+  },
+  {
+    name:'王子璇',
+    tag:'温柔但主体性模糊，在关系里容易失位',
+    coord:{表达:2.8, 掌控:1.7, 边界:3.0, 内化:3.4, 和解:3.8},
+    portrait:'你温和、好相处，很少与人起冲突。在关系里你常常是那个“配合”的人——别人安排，你接受；别人推着走，你就走。你不是没有想法，只是习惯先看别人的需要。深层冲突你会回避，因为你怕一开口，关系就变了。',
+    strengths:['善解人意，和你相处很舒服','包容度高，不轻易评判别人','是关系里的稳定器'],
+    costs:['长期配合让你慢慢失去自己的位置','委屈攒到一定程度会突然爆发或突然离开','对方其实想知道你想要什么，但你不说'],
+    advice:[
+      '练习一次“我想要……”的句式，从最小的事开始，比如“今天我想吃这家”。',
+      '温柔不等于同意；你可以温和地说“这次我不太想”。',
+      '冲突不一定会毁掉关系，长期的压抑才会。'
+    ],
+    manual:'我很少说不，不代表我没有想法；如果你问我想要什么，我会慢慢告诉你。'
+  }
+];
+
+/* ================= 状态 ================= */
+let step = 0;
+let answers = {};
+let currentPhase = 'intro';
+let result = null;
+let generatedAt = null;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function storageAvailable(){
+  try{
+    const t = '__fm_test__';
+    localStorage.setItem(t, t);
+    localStorage.removeItem(t);
+    return true;
+  }catch(e){ return false; }
+}
+const HAS_STORAGE = storageAvailable();
+
+function saveState(){
+  if(!HAS_STORAGE) return;
+  try{
+    const consentEl = $('consent');
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      version: STORAGE_VERSION,
+      phase: currentPhase,
+      step: step,
+      answers: answers,
+      consent: consentEl ? consentEl.checked : false,
+      generatedAt: generatedAt,
+      savedAt: Date.now()
+    }));
+  }catch(e){}
+}
+
+function loadState(){
+  if(!HAS_STORAGE) return null;
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return null;
+    const s = JSON.parse(raw);
+    if(!s || s.version !== STORAGE_VERSION) return null;
+    return s;
+  }catch(e){ return null; }
+}
+
+function clearState(){
+  if(!HAS_STORAGE) return;
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+}
+
+function updateAutosaveHint(){
+  const el = $('autosaveText'), box = $('autosaveHint');
+  if(!el || !box) return;
+  if(HAS_STORAGE){
+    el.textContent = '进度已自动保存在本浏览器，刷新不会丢失';
+    box.classList.remove('offline');
+  }else{
+    el.textContent = '当前浏览器不支持自动保存，请勿刷新页面';
+    box.classList.add('offline');
+  }
+}
+
+function restart(){
+  if(!confirm('确定要清除本次进度并重新开始吗？此操作不可撤销。')) return;
+  clearState();
+  location.reload();
+}
+window.restart = restart;
+
+/* ================= 开始 ================= */
+$('startBtn').addEventListener('click', () => {
+  if(!$('consent').checked){
+    $('consentError').classList.remove('hidden');
+    return;
+  }
+  $('consentError').classList.add('hidden');
+  currentPhase = 'test';
+  $('intro').classList.add('hidden');
+  $('test').classList.remove('hidden');
+  step = 0;
+  saveState();
+  renderStep();
+});
+
+/* ================= 渲染 ================= */
+function renderStep(){
+  const mod = MODULES[step];
+  $('stepTag').textContent = `第 ${step+1} 部分 / 共 ${MODULES.length} 部分`;
+  $('moduleTitle').textContent = mod.title;
+  $('moduleHint').textContent = mod.hint;
+  $('formError').classList.add('hidden');
+
+  const qs = QUESTIONS.filter(q => q.m === mod.key);
+  $('questionForm').innerHTML = qs.map(renderQuestion).join('');
+
+  qs.forEach(q => {
+    const inputs = document.querySelectorAll(`input[name="${q.id}"]`);
+    const val = answers[q.id];
+    if(val){
+      inputs.forEach(inp => {
+        if(Number(inp.value) === Number(val)){
+          inp.checked = true;
+          inp.closest('.opt').classList.add('sel');
+        }
+      });
+    }
+    inputs.forEach(inp => {
+      inp.addEventListener('change', () => {
+        inputs.forEach(i => i.closest('.opt').classList.remove('sel'));
+        inp.closest('.opt').classList.add('sel');
+        answers[q.id] = Number(inp.value);
+        updateProgress();
+      });
+    });
+  });
+
+  $('prevBtn').style.visibility = step === 0 ? 'hidden' : 'visible';
+  $('nextBtn').classList.toggle('hidden', step === MODULES.length - 1);
+  $('submitBtn').classList.toggle('hidden', step !== MODULES.length - 1);
+  updateProgress();
+}
+
+function renderQuestion(q){
+  return `<div class="q" data-qid="${q.id}">
+    <div class="qtitle"><span class="qno">${q.id}</span>${esc(q.t)}</div>
+    <div class="scale">
+      ${SCALE_LABELS.map((lab,i)=>`
+        <label class="opt">
+          <input type="radio" name="${q.id}" value="${i+1}">
+          <span>${i+1}<br><span class="muted">${lab}</span></span>
+        </label>`).join('')}
+    </div>
+  </div>`;
+}
+
+function validateStep(){
+  const qs = QUESTIONS.filter(q => q.m === MODULES[step].key);
+  return qs.every(q => {
+    const a = answers[q.id];
+    return a !== undefined && a !== null && a !== '';
+  });
+}
+
+$('nextBtn').addEventListener('click', () => {
+  if(!validateStep()){
+    $('formError').classList.remove('hidden');
+    return;
+  }
+  step++;
+  saveState();
+  renderStep();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+$('prevBtn').addEventListener('click', () => {
+  step = Math.max(0, step-1);
+  saveState();
+  renderStep();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+$('submitBtn').addEventListener('click', () => {
+  if(!validateStep()){
+    $('formError').classList.remove('hidden');
+    return;
+  }
+  generatedAt = new Date().toISOString();
+  currentPhase = 'report';
+  saveState();
+  result = computeResult();
+  renderReport(result);
+  $('test').classList.add('hidden');
+  $('report').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+function updateProgress(){
+  const answered = QUESTIONS.filter(q => {
+    const a = answers[q.id];
+    return a !== undefined && a !== null && a !== '';
+  }).length;
+  $('progressBar').style.width = Math.round(answered / QUESTIONS.length * 100) + '%';
+  $('progressText').textContent = `${answered} / ${QUESTIONS.length}`;
+  saveState();
+}
+
+/* ================= 计分 ================= */
+function computeResult(){
+  const sums = {}, counts = {}, items = {};
+  QUESTIONS.forEach(q => {
+    const a = answers[q.id];
+    if(a === undefined || a === null) return;
+    let v = Number(a);
+    if(q.reverse) v = 6 - v;
+    sums[q.dim] = (sums[q.dim] || 0) + v;
+    counts[q.dim] = (counts[q.dim] || 0) + 1;
+    items[q.dim] = items[q.dim] || [];
+    items[q.dim].push(q.id);
+  });
+
+  const user = {};
+  Object.keys(DIM_NAMES).forEach(d => {
+    user[d] = counts[d] ? Math.round((sums[d] / counts[d]) * 10) / 10 : 3;
+  });
+
+  const ranked = GUESTS.map(g => {
+    let sq = 0;
+    Object.keys(WEIGHTS).forEach(d => {
+      const diff = user[d] - g.coord[d];
+      sq += WEIGHTS[d] * diff * diff;
+    });
+    const dist = Math.sqrt(sq);
+    const match = Math.max(40, Math.min(96, Math.round(100 - (dist / MAX_DIST) * 62)));
+    return {guest:g, dist, match};
+  }).sort((a,b) => b.match - a.match);
+
+  return {
+    user,
+    items,
+    ranked,
+    top: ranked[0],
+    second: ranked[1],
+    farthest: ranked[ranked.length - 1]
+  };
+}
+
+/* ================= 报告 ================= */
+function dimBar(dim, userVal, guestVal){
+  const pct = Math.round(userVal / 5 * 100);
+  return `<div class="metric">
+    <div class="metricTop">
+      <span><strong>${DIM_NAMES[dim]}</strong></span>
+      <span>你 ${userVal} / 参考 ${guestVal}</span>
+    </div>
+    <div class="bar"><div style="width:${pct}%"></div></div>
+    <div class="muted" style="font-size:12.5px;margin-top:4px">${DIM_NOTES[dim]}</div>
+    <div class="muted" style="font-size:12.5px">依据题号：${(result.items[dim] || []).join('、')}</div>
+  </div>`;
+}
+
+function renderReport(r){
+  const g = r.top.guest;
+  const dateStr = new Date(generatedAt).toLocaleDateString('zh-CN');
+  const dims = Object.keys(DIM_NAMES);
+
+  $('report').innerHTML = `
+    <div class="card">
+      <div class="row noPrint" style="justify-content:space-between">
+        <div>
+          <span class="tag">友情人格报告</span>
+          <span class="tag pink">${dateStr}</span>
+        </div>
+        <div>
+          <button class="btn secondary" onclick="window.print()">打印 / 保存 PDF</button>
+          <button class="btn ghost" onclick="restart()">重新测试</button>
+        </div>
+      </div>
+
+      <h1>你的友情人格报告</h1>
+      <p class="muted">本报告基于你的自评答案自动生成，用于自我探索与沟通参考，不是心理诊断，也不预测关系成败。</p>
+
+      <div class="hero">
+        <div class="muted" style="font-size:13px">最接近你的类型</div>
+        <div class="heroName">${esc(g.name)}型 <span class="scorePill">契合度 ${r.top.match}</span></div>
+        <div class="heroTag">${esc(g.tag)}</div>
+        <div class="muted" style="margin-top:8px;font-size:13px">次接近：${esc(r.second.guest.name)}型（${r.second.match}）· 差异最大：${esc(r.farthest.guest.name)}型</div>
+      </div>
+
+      <h2>一、你的友情人格画像</h2>
+      <p>${esc(g.portrait)}</p>
+
+      <h2>二、五维对照：你 vs 这一类型的典型状态</h2>
+      <p class="muted">分数为 1–5 的相对强度，不是人群百分位。差值越大，说明你在这个维度上比该类型的典型状态更偏一端。</p>
+      ${dims.map(d => dimBar(d, r.user[d], g.coord[d])).join('')}
+
+      <h2>三、这份人格在友情里的优势</h2>
+      <ul class="list">${g.strengths.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+
+      <h2>四、你可能付出的代价</h2>
+      <p class="muted">下面写的不是“缺点”，而是这种人格在关系里可能产生的成本。看见成本，才有调整的空间。</p>
+      <div class="callout warn">
+        <ul class="list">${g.costs.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+      </div>
+
+      <h2>五、给你的 3 条友善建议</h2>
+      <p class="muted">方向是“调整”，不是“否定”。你不需要变成另一个人，只需要多一个选择。</p>
+      <ol class="advice">${g.advice.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
+
+      <div class="quote">
+        <strong>你的友情说明书（可以直接发给在意的人）：</strong><br>
+        “${esc(g.manual)}”
+      </div>
+
+      <h2>六、最容易和你互相误会的类型</h2>
+      <div class="twoCol">
+        <div class="miniCard">
+          <h4>${esc(r.farthest.guest.name)}型 · ${esc(r.farthest.guest.tag)}</h4>
+          <p class="muted" style="margin:6px 0">TA 的五维：${Object.keys(DIM_NAMES).map(d=>`${DIM_NAMES[d]} ${r.farthest.guest.coord[d]}`).join('、')}</p>
+          <p class="muted" style="margin:6px 0">你和 TA 的友情语言差异最大，容易在“我是在关心你”和“你越界了”之间反复磨损。</p>
+        </div>
+        <div class="miniCard">
+          <h4>怎么减少磨损</h4>
+          <ul class="list" style="margin:6px 0;padding-left:18px">
+            <li>先说意图，再说内容：“我不是要评价你，我只是有点担心。”</li>
+            <li>给对方一个“退出选项”：“你要是不想聊这个，我们就换个话题。”</li>
+            <li>差异不是不合适，只是需要更明确的翻译。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>七、方法与局限</h2>
+      <ul class="list">
+        <li><strong>方法：</strong>20 道自评题覆盖表达浓度、掌控感、边界感、情绪内化、和解姿态五个维度；将你的维度得分与 8 种人格类型的参考坐标做加权距离计算，距离最近者即为匹配类型，并换算为 40–96 的契合度区间。</li>
+        <li><strong>局限：</strong>本测试为规则化自动结果，未使用人群常模与信效度检验；结果受作答时的情绪状态和自我认知影响。人物类型是基于节目公开互动印象做的维度抽象，<strong>不是对嘉宾本人的心理评估</strong>。</li>
+        <li><strong>边界：</strong>不构成临床诊断、心理治疗或医疗建议；不用于评判任何一段关系的好坏。</li>
+        <li><strong>隐私：</strong>答案仅保存在你本机浏览器，不上传服务器。</li>
+      </ul>
+
+      <div class="callout good noPrint">
+        <strong>想继续往下看？</strong>
+        <p>友情模式和职业模式常常是同一个人格的两面。如果你也想看清自己在工作场景里的适配方向，可以了解主测评《职业适配与发展策略评估》。</p>
+      </div>
+
+      <p class="muted printOnly" style="font-size:12px;margin-top:18px">友情人格匹配测试 · 生成日期 ${dateStr} · 非官方衍生内容，仅供自我探索</p>
+    </div>
+  `;
+}
+
+/* ================= 启动恢复 ================= */
+function restoreState(s){
+  answers = s.answers || {};
+  step = s.step || 0;
+  currentPhase = s.phase;
+  generatedAt = s.generatedAt || null;
+  if(s.consent){
+    const el = $('consent');
+    if(el) el.checked = true;
+  }
+  if(s.phase === 'report'){
+    result = computeResult();
+    renderReport(result);
+    $('intro').classList.add('hidden');
+    $('test').classList.add('hidden');
+    $('report').classList.remove('hidden');
+  }else if(s.phase === 'test'){
+    $('intro').classList.add('hidden');
+    $('test').classList.remove('hidden');
+    renderStep();
+    const el = $('restoreNotice');
+    el.innerHTML = `<div><strong>已恢复上次进度</strong><div class="small">保存时间：${new Date(s.savedAt).toLocaleString('zh-CN')}。如需从头开始，请点击【清除进度】。</div></div>`;
+    el.classList.remove('hidden');
+  }
+}
+
+(function boot(){
+  updateAutosaveHint();
+  const saved = loadState();
+  if(!saved) return;
+  if((saved.phase === 'test' || saved.phase === 'report') && saved.answers && Object.keys(saved.answers).length > 0){
+    restoreState(saved);
+  }
+})();
+</script>
+</body>
+</html>
